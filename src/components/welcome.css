@@ -1,0 +1,344 @@
+/* FONTS */
+@font-face {
+    font-family: "Old Stone";
+    src: url("../assets/OldStone.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DIOGENES";
+    src: url("../assets/DIOGENES.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Guillem Presents */
+.backgroundCharacterCreation {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storyText {
+    font-family: "DIOGENES", montserrat, sans-serif;
+    color: whitesmoke;
+    text-align: center;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.storyText:hover {
+    text-shadow: rgb(255, 106, 0) 0 0 15px;
+}
+
+.fadetoblack {
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+
+    z-index: 10;
+}
+
+@keyframes fadetoblack {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background-color: black;
+    }
+}
+
+@keyframes fadetoview {
+    0% {
+        background-color: black;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes fadetoblackandback {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    25% {
+        background-color: black;
+    }
+    75% {
+        background-color: black;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+/* Welcome */
+#Welcome {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.backgroundWelcome {
+    width: 100vw;
+    height: 100vh;
+
+    /* background-image: url(https://free4kwallpapers.com/uploads/originals/2016/04/05/prehistoric-stone-age--inspired-by-far-cry-primal-wallpaper.jpg);
+    background-position: fixed;
+    background-size: auto 105vh; */
+
+    /* animation: panning 30s infinite ease-in-out; */
+
+    position: fixed;
+
+    z-index: -2;
+}
+
+.background {
+    height: 100%;
+    width: 100%;
+
+    background-repeat: no-repeat;
+
+    position: absolute;
+    top: 0;
+}
+
+#background5 {
+    background-image: url("../assets/primal5.png");
+
+    background-size: cover;
+    z-index: -6;
+
+    animation: panning5 30s infinite ease-in-out;
+}
+#background4 {
+    background-image: url("../assets/primal4.png");
+
+    background-size: cover;
+
+    z-index: -5;
+
+    animation: panning4 30s infinite ease-in-out;
+}
+#background3 {
+    background-image: url("../assets/primal3a.png");
+
+    background-size: cover;
+
+    z-index: -4;
+
+    animation: panning3 30s infinite ease-in-out;
+}
+#background2 {
+    background-image: url("../assets/primal2.png");
+
+    background-size: cover;
+
+    z-index: -3;
+
+    animation: panning2 30s infinite ease-in-out;
+}
+
+#background1 {
+    background-image: url("../assets/primal1.png");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    top: 0;
+    z-index: -2;
+
+    animation: panning1 30s infinite ease-in-out;
+}
+
+/* TRIBES */
+#logo {
+    font-family: "Old Stone", montserrat, sans-serif;
+
+    background: url("../assets/logoBackground.jpeg");
+    background-size: 570px;
+    background-position: center;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-weight: normal;
+    text-shadow: none;
+}
+
+#logoShadow {
+    font-family: "Old Stone", montserrat, sans-serif;
+
+    color: rgba(0, 0, 0, 0);
+    text-shadow: rgba(0, 0, 0, 0.7) 0 0 5px;
+
+    height: 0;
+    z-index: -1;
+    position: relative;
+    left: -5px;
+    top: 5px;
+}
+
+/* TITLE TEXT */
+
+.titleTxt {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.title {
+    font-family: "DIOGENES", montserrat, sans-serif;
+
+    background-image: url("../assets/letterPaint.jpeg");
+    background-size: contain;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.shadow {
+    font-family: "DIOGENES", montserrat, sans-serif;
+
+    color: rgba(0, 0, 0, 0);
+    text-shadow: rgba(255, 170, 170, 0.7) 0 0 5px;
+
+    height: 0;
+    z-index: -1;
+    position: relative;
+}
+
+/* 'Welcome to' */
+.titleTxt h4 {
+    font-weight: normal;
+    font-size: 40px;
+}
+
+/* 'TRIBES' */
+.titleTxt h1 {
+    font-size: 240px;
+    height: 240px;
+}
+
+/* 'Join now and claim your' */
+.titleTxt h3 {
+    font-size: 30px;
+}
+
+/* 'FREEDOM' */
+.titleTxt h2 {
+    font-size: 50px;
+}
+
+/* START BUTTON */
+/* #startButton {
+    margin: 20px;
+    border: 5px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+} */
+#startButton h1 {
+    font-family: "DIOGENES", montserrat, sans-serif;
+    color: white;
+    padding: 10px 20px 5px 20px;
+}
+
+#startButton {
+    background-image: linear-gradient(
+        to right,
+        #c21500 0%,
+        #ffc500 51%,
+        #c21500 100%
+    );
+    margin: 20px 5px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border: 1px solid whitesmoke;
+    border-radius: 2px;
+    display: block;
+}
+
+#startButton:hover {
+    background-position: right center; /* change the direction of the change here */
+    cursor: pointer;
+}
+
+/* ANIMATIONS */
+
+@keyframes panning1 {
+    0% {
+        background-position: 0px 0%; /* limit */
+    }
+    50% {
+        background-position: -70px 0%;
+    }
+    100% {
+        background-position: 0px 0%;
+    }
+}
+
+@keyframes panning2 {
+    0% {
+        background-position: 10px 0%;
+    }
+    50% {
+        background-position: -18px 0%; /* limit */
+    }
+    100% {
+        background-position: 10px 0%;
+    }
+}
+
+@keyframes panning3 {
+    0% {
+        background-position: -12px 0%;
+    }
+    50% {
+        background-position: -18px 0%;
+    }
+    100% {
+        background-position: -12px 0%;
+    }
+}
+
+@keyframes panning4 {
+    0% {
+        background-position: -5px 0%;
+    }
+    50% {
+        background-position: 0px 0%;
+    }
+    100% {
+        background-position: -5px 0%;
+    }
+}
+
+@keyframes panning5 {
+    0% {
+        background-position: -8px 0%;
+    }
+    50% {
+        background-position: 0px 0%;
+    }
+    100% {
+        background-position: -8px 0%;
+    }
+}

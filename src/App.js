@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components
+import Welcome from "./components/Welcome.jsx";
+// import Home from "./components/Home/Home.jsx";
+// import Game from "./components/Game/Game.jsx";
+
+// import Sound from "react-sound";
+// import MenuMusic from "../src/assets/DawnOfManMenu.mp3";
+
+import { useEffect } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, logoutUser, setScreen } from "./redux/reducer.js";
+
+export default function App() {
+    const screen = useSelector((state) => state.screen);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        fetch("/user/id.json")
+            .then((response) => response.json())
+            .then((data) => {
+                // console.log("/user/id.json data:", data);
+                if (data.id) {
+                    const userData = data;
+                    userData && dispatch(loginUser(userData));
+                } else {
+                    dispatch(logoutUser());
+                    dispatch(setScreen("start"));
+                }
+            });
+    }, []);
+
+    return (
+        <>
+            {screen === "start" && (
+                <>
+                    <div className="backgroundCharacterCreation">
+                        <div className="columnFlex">
+                            <h1
+                                className="storyText"
+                                onClick={() => dispatch(setScreen("welcome"))}
+                            >
+                                Guillem presents:
+                            </h1>
+                        </div>
+                    </div>
+                </>
+            )}
+            {/* {(screen === "welcome" || screen === "home") && (
+                <Sound url={MenuMusic} playStatus={Sound.status.PLAYING} />
+            )} */}
+            {screen === "welcome" && <Welcome />}
+            {/* {screen === "home" && <Home />}
+            {screen === "game" && <Game />} */}
+        </>
+    );
 }
-
-export default App;
