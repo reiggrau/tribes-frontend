@@ -4,6 +4,8 @@ import { useState } from "react";
 const emailRegex =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+const url = "https://tribes-the-game-backend.onrender.com";
+
 export default function Login(props) {
     const { changeMenu } = props;
 
@@ -25,7 +27,7 @@ export default function Login(props) {
         } else if (!form.email.match(emailRegex)) {
             setMessage("Invalid email format!");
         } else {
-            fetch("/getcode", {
+            fetch(url + "/getcode", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -56,7 +58,7 @@ export default function Login(props) {
         if (!form.code || !form.password) {
             setMessage("Missing fields!");
         } else {
-            fetch("/resetpassword", {
+            fetch(url + "/resetpassword", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

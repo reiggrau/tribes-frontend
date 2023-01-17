@@ -8,6 +8,8 @@ import { loginUser, logoutUser, setScreen } from "../../redux/reducer.js";
 const emailRegex =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+const url = "https://tribes-the-game-backend.onrender.com";
+
 export default function Login(props) {
     const { changeMenu } = props;
 
@@ -39,7 +41,7 @@ export default function Login(props) {
         ) {
             this.setState({ message: "Invalid input format!" });
         } else {
-            fetch("/login", {
+            fetch(url + "/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -71,7 +73,7 @@ export default function Login(props) {
         setForm({ email: "", password: "" });
         dispatch(logoutUser());
 
-        fetch("/logout");
+        fetch(url + "/logout");
     }
 
     return (

@@ -19,8 +19,6 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    "homepage": "https://tribes-the-game-backend.onrender.com",
-    "proxy": "https://tribes-the-game-backend.onrender.com",
     "eslintConfig": {
         "extends": [
             "react-app",

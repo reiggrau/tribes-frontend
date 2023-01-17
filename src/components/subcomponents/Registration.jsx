@@ -5,6 +5,8 @@ const namesRegex = /^[a-z ,.'-]+$/i;
 const emailRegex =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+const url = "https://tribes-the-game-backend.onrender.com";
+
 export default function Registration(props) {
     const { changeMenu } = props;
 
@@ -28,7 +30,7 @@ export default function Registration(props) {
         ) {
             setMessage("Invalid input format!");
         } else {
-            fetch("/registration", {
+            fetch(url + "/registration", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

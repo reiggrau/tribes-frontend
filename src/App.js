@@ -13,13 +13,15 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, logoutUser, setScreen } from "./redux/reducer.js";
 
+const url = "https://tribes-the-game-backend.onrender.com";
+
 export default function App() {
     const screen = useSelector((state) => state.screen);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch("/user/id.json")
+        fetch(url + "/user/id.json")
             .then((response) => response.json())
             .then((data) => {
                 // console.log("/user/id.json data:", data);
@@ -52,7 +54,8 @@ export default function App() {
             {/* {(screen === "welcome" || screen === "home") && (
                 <Sound url={MenuMusic} playStatus={Sound.status.PLAYING} />
             )} */}
-            {screen === "welcome" && <Welcome />}
+            <Welcome />
+            {/* {screen === "welcome" && <Welcome />} */}
             {/* {screen === "home" && <Home />}
             {screen === "game" && <Game />} */}
         </>
