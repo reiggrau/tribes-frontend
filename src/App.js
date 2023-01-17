@@ -8,32 +8,13 @@ import Welcome from "./components/Welcome.jsx";
 // import Sound from "react-sound";
 // import MenuMusic from "../src/assets/DawnOfManMenu.mp3";
 
-import { useEffect } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser, logoutUser, setScreen } from "./redux/reducer.js";
-
-const url = "https://tribes-the-game-backend.onrender.com";
+import { setScreen } from "./redux/reducer.js";
 
 export default function App() {
     const screen = useSelector((state) => state.screen);
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        fetch(url + "/user/id.json")
-            .then((response) => response.json())
-            .then((data) => {
-                // console.log("/user/id.json data:", data);
-                if (data.id) {
-                    const userData = data;
-                    userData && dispatch(loginUser(userData));
-                } else {
-                    dispatch(logoutUser());
-                    dispatch(setScreen("start"));
-                }
-            });
-    }, []);
 
     return (
         <>
