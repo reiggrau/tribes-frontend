@@ -54,8 +54,7 @@ export default function App() {
             {/* {(screen === "welcome" || screen === "home") && (
                 <Sound url={MenuMusic} playStatus={Sound.status.PLAYING} />
             )} */}
-            <Welcome />
-            {/* {screen === "welcome" && <Welcome />} */}
+            {screen === "welcome" && <Welcome />}
             {/* {screen === "home" && <Home />}
             {screen === "game" && <Game />} */}
         </>
