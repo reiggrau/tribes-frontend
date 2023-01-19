@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
 import { loginUser, logoutUser, setScreen } from "../../redux/reducer.js";
 
 // Variables
-const emailRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-const url = "https://tribes-the-game-backend.onrender.com";
+const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 export default function Login(props) {
     const { changeMenu } = props;
@@ -17,8 +14,13 @@ export default function Login(props) {
     const [message, setMessage] = useState("");
 
     const user = useSelector((state) => state.user);
+    const serverUrl = useSelector((state) => state.serverUrl);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log("Login.jsx useEffect");
+    }, []);
 
     function inputChange(e) {
         // console.log("inputChange()");
@@ -26,22 +28,18 @@ export default function Login(props) {
     }
 
     function submitForm(e) {
-        e.preventDefault();
-        console.log("submitForm() form:", form);
+        console.log("submitForm()");
 
-        if (
-            // Check if empty fields
-            !form.email ||
-            !form.password
-        ) {
+        e.preventDefault();
+
+        if (!form.email || !form.password) {
             setMessage("Missing fields!");
-        } else if (
-            // Check if valid input format
-            !form.email.match(emailRegex)
-        ) {
+        } else if (!form.email.match(emailRegex)) {
             this.setState({ message: "Invalid input format!" });
         } else {
-            fetch(url + "/login", {
+            console.log("fetch " + serverUrl + "/login form.email", form.email);
+
+            fetch(serverUrl + "/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -56,24 +54,24 @@ export default function Login(props) {
                         const userData = data.user;
 
                         userData && dispatch(loginUser(userData)); // fetch user info from server and send it to redux global store
-                        // location.reload();
                     } else {
                         setMessage(data.message);
                         throw new Error("LOG IN FAILED");
                     }
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.log("submitForm() error :", error);
                 });
         }
     }
 
     function logOut() {
         console.log("logOut()");
+
         setForm({ email: "", password: "" });
         dispatch(logoutUser());
 
-        fetch(url + "/logout");
+        fetch(serverUrl + "/logout");
     }
 
     return (
@@ -83,29 +81,14 @@ export default function Login(props) {
                     <h2>Log in</h2>
                     <p>
                         Not a member?:{" "}
-                        <span
-                            className="link"
-                            onClick={() => changeMenu("signup")}
-                        >
+                        <span className="link" onClick={() => changeMenu("signup")}>
                             Sign up
                         </span>
                     </p>
                     <p className="message">{message}</p>
                     <form>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="email"
-                            value={form.email}
-                            onChange={inputChange}
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="password"
-                            value={form.password}
-                            onChange={inputChange}
-                        />
+                        <input type="email" name="email" placeholder="email" value={form.email} onChange={inputChange} />
+                        <input type="password" name="password" placeholder="password" value={form.password} onChange={inputChange} />
                         <button onClick={submitForm}>Log in</button>
                     </form>
                     <p className="link" onClick={() => changeMenu("password")}>
@@ -117,21 +100,12 @@ export default function Login(props) {
                 <div className="window">
                     <div className="centeredFlex">
                         <div className="logMenu">
-                            <img
-                                src={
-                                    user.picture ||
-                                    "../../assets/default_user.jpg"
-                                }
-                                id="headerUserPicture"
-                                alt="user"
-                            />
+                            <img src={user.picture || "../../assets/default_user.jpg"} id="loginUserPicture" alt="user" />
+                            <h2>Welcome back,</h2>
                             <h1>{user.username}</h1>
                         </div>
                     </div>
-                    <div
-                        id="startButton"
-                        onClick={() => dispatch(setScreen("home"))}
-                    >
+                    <div id="startButton" onClick={() => dispatch(setScreen("home"))}>
                         <h1>LAUNCH GAME</h1>
                     </div>
                     <div className="centeredFlex">

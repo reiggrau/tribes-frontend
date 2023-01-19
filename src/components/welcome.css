@@ -243,14 +243,13 @@
 }
 
 /* START BUTTON */
-/* #startButton {
-    margin: 20px;
-    border: 5px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: orange;
-} */
+#loginUserPicture {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    /* border-radius: 50%; */
+}
+
 #startButton h1 {
     font-family: "DIOGENES", montserrat, sans-serif;
     color: white;
@@ -258,12 +257,7 @@
 }
 
 #startButton {
-    background-image: linear-gradient(
-        to right,
-        #c21500 0%,
-        #ffc500 51%,
-        #c21500 100%
-    );
+    background-image: linear-gradient(to right, #c21500 0%, #ffc500 51%, #c21500 100%);
     margin: 20px 5px;
     text-align: center;
     text-transform: uppercase;

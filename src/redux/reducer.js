@@ -1,8 +1,13 @@
 // REDUX SETUP
 import { combineReducers } from "redux";
 
+const isDeployed = false; // Change this to boolean 'true' before deploying
+
+const serverUrl = isDeployed ? "https://tribes-the-game-backend.onrender.com" : "";
+
 // Initial state
 const initialState = {
+    serverUrl: serverUrl,
     user: {},
     friends: [],
     newRequest: false,
@@ -12,6 +17,12 @@ const initialState = {
     character: {},
     location: "loading",
 };
+
+// SERVER URL
+// reducer:
+function serverUrlReducer(user = initialState.serverUrl) {
+    return user;
+}
 
 // USER DATA
 // reducer:
@@ -243,6 +254,7 @@ export function setLocation(location) {
 // ROOT REDUCER
 
 const rootReducer = combineReducers({
+    serverUrl: serverUrlReducer,
     user: userReducer,
     friends: friendsReducer,
     newRequest: newRequestReducer,

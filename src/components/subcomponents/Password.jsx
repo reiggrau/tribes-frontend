@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { useSelector } from "react-redux";
 
 // Variables
-const emailRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-const url = "https://tribes-the-game-backend.onrender.com";
+const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 export default function Login(props) {
     const { changeMenu } = props;
@@ -12,6 +11,12 @@ export default function Login(props) {
     const [form, setForm] = useState({ code: "", email: "", password: "" });
     const [message, setMessage] = useState("");
     const [stage, setStage] = useState("email");
+
+    const serverUrl = useSelector((state) => state.serverUrl);
+
+    useEffect(() => {
+        console.log("Password.jsx useEffect");
+    }, []);
 
     function inputChange(e) {
         // console.log("inputChange()");
@@ -27,7 +32,7 @@ export default function Login(props) {
         } else if (!form.email.match(emailRegex)) {
             setMessage("Invalid email format!");
         } else {
-            fetch(url + "/getcode", {
+            fetch(serverUrl + "/getcode", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -58,7 +63,7 @@ export default function Login(props) {
         if (!form.code || !form.password) {
             setMessage("Missing fields!");
         } else {
-            fetch(url + "/resetpassword", {
+            fetch(serverUrl + "/resetpassword", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -94,12 +99,7 @@ export default function Login(props) {
                     </p>
                     <p className="message">{message}</p>
                     <form>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="email"
-                            onChange={inputChange}
-                        />
+                        <input type="email" name="email" placeholder="email" onChange={inputChange} />
                         <button onClick={submitForm}>Send</button>
                     </form>
                     <p className="link" onClick={() => changeMenu("login")}>
@@ -115,18 +115,8 @@ export default function Login(props) {
                     </p>
                     <p className="message">{message}</p>
                     <form>
-                        <input
-                            type="text"
-                            name="code"
-                            placeholder="code"
-                            onChange={inputChange}
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="new password"
-                            onChange={inputChange}
-                        />
+                        <input type="text" name="code" placeholder="code" onChange={inputChange} />
+                        <input type="password" name="password" placeholder="new password" onChange={inputChange} />
                         <button onClick={submitCode}>Send</button>
                     </form>
                     <p className="link" onClick={() => changeMenu("login")}>

@@ -12,6 +12,8 @@ export default function Welcome() {
     const [menu, setMenu] = useState("login");
 
     useEffect(() => {
+        console.log("Welcome.jsx useEffect");
+
         fadeRef.current.style.backgroundColor = "black";
         fadeRef.current.style.visibility = "visible";
         setTimeout(() => {
@@ -26,7 +28,7 @@ export default function Welcome() {
     }, []);
 
     function changeMenu(newMenu) {
-        console.log("changeMenu :", newMenu);
+        // console.log("changeMenu :", newMenu);
         setMenu(newMenu);
     }
 
