@@ -1,7 +1,9 @@
 // REDUX SETUP
 import { combineReducers } from "redux";
 
-const isDeployed = false; // Change this to boolean 'true' before deploying
+//// IMPORTANT ////
+const isDeployed = true; // Change this to boolean 'true' before deploying
+////
 
 const serverUrl = isDeployed ? "https://tribes-the-game-backend.onrender.com" : "";
 
