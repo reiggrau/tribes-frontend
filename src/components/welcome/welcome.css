@@ -1,7 +1,7 @@
 /* FONTS */
 @font-face {
     font-family: "Old Stone";
-    src: url("../assets/OldStone.ttf") format("truetype");
+    src: url("../../assets/OldStone.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
     font-family: "DIOGENES";
-    src: url("../assets/DIOGENES.ttf") format("truetype");
+    src: url("../../assets/DIOGENES.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -116,7 +116,7 @@
 }
 
 #background5 {
-    background-image: url("../assets/primal5.png");
+    background-image: url("../../assets/primal5.png");
 
     background-size: cover;
     z-index: -6;
@@ -124,7 +124,7 @@
     animation: panning5 30s infinite ease-in-out;
 }
 #background4 {
-    background-image: url("../assets/primal4.png");
+    background-image: url("../../assets/primal4.png");
 
     background-size: cover;
 
@@ -133,7 +133,7 @@
     animation: panning4 30s infinite ease-in-out;
 }
 #background3 {
-    background-image: url("../assets/primal3a.png");
+    background-image: url("../../assets/primal3a.png");
 
     background-size: cover;
 
@@ -142,7 +142,7 @@
     animation: panning3 30s infinite ease-in-out;
 }
 #background2 {
-    background-image: url("../assets/primal2.png");
+    background-image: url("../../assets/primal2.png");
 
     background-size: cover;
 
@@ -152,7 +152,7 @@
 }
 
 #background1 {
-    background-image: url("../assets/primal1.png");
+    background-image: url("../../assets/primal1.png");
 
     background-size: cover;
     background-repeat: no-repeat;
@@ -168,7 +168,7 @@
 #logo {
     font-family: "Old Stone", montserrat, sans-serif;
 
-    background: url("../assets/logoBackground.jpeg");
+    background: url("../../assets/logoBackground.jpeg");
     background-size: 570px;
     background-position: center;
     background-clip: border-box;
@@ -202,7 +202,7 @@
 .title {
     font-family: "DIOGENES", montserrat, sans-serif;
 
-    background-image: url("../assets/letterPaint.jpeg");
+    background-image: url("../../assets/letterPaint.jpeg");
     background-size: contain;
     background-clip: border-box;
     -webkit-background-clip: text;

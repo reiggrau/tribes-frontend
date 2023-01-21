@@ -67,8 +67,8 @@ export default function Registration(props) {
             <p className="message">{message}</p>
             <form>
                 <input type="text" name="username" placeholder="user name" onChange={inputChange} />
-                <input type="email" name="email" placeholder="email" onChange={inputChange} />
-                <input type="password" name="password" placeholder="password" onChange={inputChange} />
+                <input type="email" name="email" placeholder="FAKE email" onChange={inputChange} />
+                <input type="password" name="password" placeholder="FAKE password" onChange={inputChange} />
                 <button onClick={submitForm}>Sign up</button>
             </form>
         </div>

@@ -1,12 +1,12 @@
 import "./App.css";
 
 // Components
-import Welcome from "./components/Welcome.jsx";
-// import Home from "./components/Home/Home.jsx";
-// import Game from "./components/Game/Game.jsx";
+import Welcome from "./components/welcome/Welcome.jsx";
+import Home from "./components/home/Home.jsx";
+import Game from "./components/game/Game.jsx";
 
-// import Sound from "react-sound";
-// import MenuMusic from "../src/assets/DawnOfManMenu.mp3";
+import useSound from "use-sound";
+import menuMusic from "../src/assets/DawnOfManMenu.mp3";
 
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,6 +19,8 @@ export default function App() {
     const serverUrl = useSelector((state) => state.serverUrl); // Change serverUrl in redux reducer before deploying
 
     const dispatch = useDispatch();
+
+    const [playMenuMusic, { stop }] = useSound(menuMusic);
 
     useEffect(() => {
         console.log("App.js useEffect serverUrl :", serverUrl);
@@ -36,7 +38,18 @@ export default function App() {
                     dispatch(setScreen("start"));
                 }
             });
+        alert("DO NOT use your real email or password! This webpage is for demonstration only. Please use a fake email and password.");
     }, []);
+
+    useEffect(() => {
+        console.log("App.js useEffect screen :", screen);
+
+        if (screen === "welcome" || screen === "home") {
+            playMenuMusic();
+        } else {
+            stop();
+        }
+    }, [screen]);
 
     return (
         <>
@@ -51,12 +64,10 @@ export default function App() {
                     </div>
                 </>
             )}
-            {/* {(screen === "welcome" || screen === "home") && (
-                <Sound url={MenuMusic} playStatus={Sound.status.PLAYING} />
-            )} */}
+            {/* {(screen === "welcome" || screen === "home") && <Sound url={MenuMusic} playStatus={Sound.status.PLAYING} />} */}
             {screen === "welcome" && <Welcome />}
-            {/* {screen === "home" && <Home />}
-            {screen === "game" && <Game />} */}
+            {screen === "home" && <Home />}
+            {screen === "game" && <Game />}
         </>
     );
 }

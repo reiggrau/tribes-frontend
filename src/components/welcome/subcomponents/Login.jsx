@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { loginUser, logoutUser, setScreen } from "../../redux/reducer.js";
+import { loginUser, logoutUser, setScreen } from "../../../redux/reducer.js";
 
 // Variables
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -99,7 +99,7 @@ export default function Login(props) {
             {user.id && (
                 <div className="window">
                     <div className="centeredFlex">
-                        <div className="logMenu">
+                        <div>
                             <img src={user.picture || "../../assets/default_user.jpg"} id="loginUserPicture" alt="user" />
                             <h2>Welcome back,</h2>
                             <h1>{user.username}</h1>
