@@ -1,18 +1,24 @@
 import "./welcome.css";
 
-// import { Routes, Route } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-
 import Login from "./subcomponents/Login.jsx";
 import Registration from "./subcomponents/Registration.jsx";
 import Password from "./subcomponents/Password.jsx";
+
+import { useState, useEffect, useRef } from "react";
+
+import { useDispatch } from "react-redux";
+import { setMusic } from "../../redux/reducer.js";
 
 export default function Welcome() {
     const fadeRef = useRef(null);
     const [menu, setMenu] = useState("login");
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         console.log("Welcome.jsx useEffect");
+
+        dispatch(setMusic("menu"));
 
         fadeRef.current.style.backgroundColor = "black";
         fadeRef.current.style.visibility = "visible";

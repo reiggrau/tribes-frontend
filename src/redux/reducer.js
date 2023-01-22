@@ -1,3 +1,5 @@
+// THIS SECTION NEEDS TO BE REMADE
+
 // REDUX SETUP
 import { combineReducers } from "redux";
 
@@ -10,6 +12,7 @@ const serverUrl = isDeployed ? "https://tribes-the-game-backend.onrender.com" : 
 // Initial state
 const initialState = {
     serverUrl: serverUrl,
+    music: "none",
     user: {},
     friends: [],
     newRequest: false,
@@ -24,6 +27,23 @@ const initialState = {
 // reducer:
 function serverUrlReducer(user = initialState.serverUrl) {
     return user;
+}
+
+// MUSIC
+// reducer
+function musicReducer(music = initialState.music, action) {
+    if (action.type === "/music/set") {
+        return action.payload.music;
+    }
+    return music;
+}
+
+// actions
+export function setMusic(music) {
+    return {
+        type: "/music/set",
+        payload: { music },
+    };
 }
 
 // USER DATA
@@ -257,6 +277,7 @@ export function setLocation(location) {
 
 const rootReducer = combineReducers({
     serverUrl: serverUrlReducer,
+    music: musicReducer,
     user: userReducer,
     friends: friendsReducer,
     newRequest: newRequestReducer,
