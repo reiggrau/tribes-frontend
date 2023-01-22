@@ -4,12 +4,19 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import menuMusic from "../../assets/DawnOfManMenu.mp3";
+import tutorialMusic from "../../assets/tribes2.mp3";
+
+import stormAmbience from "../../assets/StormSoundEffects.mp3";
 
 export default function Music() {
-    // let soundUrl = "../../../src/assets/DawnOfManMenu.mp3";
+    // Play music
+    const [playMenu, { stop }] = useSound(menuMusic);
+    const [playTutorial] = useSound(tutorialMusic);
+
+    // Play ambience
+    const [playStorm] = useSound(stormAmbience);
 
     const music = useSelector((state) => state.music);
-    const [play, { stop }] = useSound(menuMusic);
 
     useEffect(() => {
         console.log("Music.jsx useEffect. music :", music);
@@ -17,13 +24,22 @@ export default function Music() {
         stop();
         switch (music) {
             case "menu":
-                console.log("play()");
-                play();
+                console.log("playMenu()");
+                playMenu();
+                break;
+            case "storm":
+                console.log("playStorm()");
+                playStorm();
+                break;
+            case "tutorial":
+                console.log("playTutorial()");
+                playTutorial();
                 break;
             default:
                 console.log("stop()");
+            // stop();
         }
-    }, [play, stop, music]);
+    }, [playMenu, music]);
 
     return <div></div>;
 }

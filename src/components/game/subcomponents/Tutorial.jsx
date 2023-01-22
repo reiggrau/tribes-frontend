@@ -1,7 +1,7 @@
 // REDUX
 import { useRef, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-// import { setScreen, setLocation, setCharacter } from "../../../redux/reducer.js";
+import { useSelector, useDispatch } from "react-redux";
+import { setMusic } from "../../../redux/reducer.js";
 
 // import Music2 from "/tribes2.mp3";
 
@@ -9,6 +9,9 @@ export default function Tutorial() {
     const character = useSelector((state) => state.character);
 
     const [sceneIndex, setSceneIndex] = useState(0);
+
+    const dispatch = useDispatch();
+
     const scene = [
         {
             image: character.image,
@@ -131,7 +134,9 @@ export default function Tutorial() {
     // const dispatch = useDispatch();
 
     useEffect(() => {
-        // backgroundRef.current.style.backgroundImage = "url(/tutorial_cave.png)";
+        console.log("Tutorial.jsx useEffect");
+
+        dispatch(setMusic("tutorial"));
 
         fadeRef.current.style.backgroundColor = "black";
         fadeRef.current.style.visibility = "visible";

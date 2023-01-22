@@ -1,7 +1,7 @@
 // REDUX
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser, logoutUser, getFriends, setScreen, setLocation } from "../../../redux/reducer.js";
+import { setLocation, setMusic } from "../../../redux/reducer.js";
 
 export default function Loading() {
     const [loading, setLoading] = useState(true);
@@ -10,6 +10,10 @@ export default function Loading() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log("Loading.jsx useEffect");
+
+        setMusic("none");
+
         setTimeout(() => {
             setLoading(false);
         }, 2000);

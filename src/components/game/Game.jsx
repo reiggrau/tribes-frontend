@@ -12,7 +12,6 @@ import Chat from "../home/subcomponents/Chat.jsx";
 // REDUX
 // import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-// import { loginUser, logoutUser, getFriends, setScreen } from "../../redux/reducer.js";
 
 export default function Game() {
     const location = useSelector((state) => state.location);

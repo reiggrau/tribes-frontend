@@ -1,20 +1,46 @@
 // REDUX
 import { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setScreen, setLocation, setCharacter } from "../../../redux/reducer.js";
+import { setScreen, setLocation, setCharacter, setMusic } from "../../../redux/reducer.js";
 
 export default function CharacterCreation() {
     const [characterDraft, setCharacterDraft] = useState({ first_name: "", last_name: "", image: "", tribe: "", role: "" });
     const [file, setFile] = useState(null);
 
     const [textIndex, setTextIndex] = useState(0);
-    const [textArr, setTextArr] = useState([0, "The night was cold, and you were far from home.", "You were fishing on a ravine when the weather changed suddenly.", "You couldn't afford to get wet, so you took refuge in a nearby cave.", "There, you awaited for the storm to end, but the day ended first...", "This is how your story began.", 1, `Ah, yes, a name of a time long gone...`, "But the ones that knew you called you something else.", 2, 3, "You started a fire and, while looking at the flames, thought about your tribe.", 4, 5, 6, "There was a puddle of perfectly still water in the cave, and you approached it.", 7, 8, "And that's who you thought you would ever be...", "But unbeknown to you, the world was changing. And so would you.", 9]);
+    const [textArr, setTextArr] = useState([
+        0,
+        "The night was cold, and you were far from home.",
+        "You were fishing on a ravine when the weather changed suddenly.",
+        "You couldn't afford to get wet, so you took refuge in a nearby cave.",
+        "There, you awaited for the storm to end, but the day ended first...",
+        "This is how your story began.",
+        1,
+        `Ah, yes, a name of a time long gone...`,
+        "But the ones that knew you called you something else.",
+        2,
+        3,
+        "You started a fire and, while looking at the flames, thought about your tribe.",
+        4,
+        5,
+        6,
+        "There was a puddle of perfectly still water in the cave, and you approached it.",
+        7,
+        8,
+        "And that's who you thought you would ever be...",
+        "But unbeknown to you, the world was changing. And so would you.",
+        9,
+    ]);
 
     const fadeRef = useRef(null);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log("CharacterCreation useEffect");
+
+        dispatch(setMusic("storm"));
+
         fadeRef.current.style.backgroundColor = "black";
         fadeRef.current.style.visibility = "visible";
         setTimeout(() => {
@@ -66,24 +92,24 @@ export default function CharacterCreation() {
     }
 
     function selectTribe(tribe) {
-        if (tribe == "Holtmar") {
+        if (tribe === "Holtmar") {
             setCharacterDraft({ ...characterDraft, tribe: tribe, strength: 6, dexterity: 4, intellect: 5 });
-        } else if (tribe == "Cessites") {
+        } else if (tribe === "Cessites") {
             setCharacterDraft({ ...characterDraft, tribe: tribe, strength: 5, dexterity: 6, intellect: 4 });
-        } else if (tribe == "Javians") {
+        } else if (tribe === "Javians") {
             setCharacterDraft({ ...characterDraft, tribe: tribe, strength: 4, dexterity: 5, intellect: 6 });
         }
         nextText();
     }
 
     function selectRole(role) {
-        if (role == "Hunter") {
+        if (role === "Hunter") {
             const newStrength = characterDraft.strength + 1;
             setCharacterDraft({ ...characterDraft, role: role, strength: newStrength });
-        } else if (role == "Crafter") {
+        } else if (role === "Crafter") {
             const newDexterity = characterDraft.dexterity + 1;
             setCharacterDraft({ ...characterDraft, role: role, dexterity: newDexterity });
-        } else if (role == "Elder") {
+        } else if (role === "Elder") {
             const newIntellect = characterDraft.intellect + 1;
             setCharacterDraft({ ...characterDraft, role: role, intellect: newIntellect });
         }
@@ -160,7 +186,7 @@ export default function CharacterCreation() {
                     </h1>
                 </div>
             )}
-            {textArr[textIndex] == 0 && (
+            {textArr[textIndex] === 0 && (
                 <div className="columnFlex">
                     <h1 className="storyText" onClick={nextText}>
                         11.700 years ago...
@@ -168,12 +194,12 @@ export default function CharacterCreation() {
                     <h4 className="storyTextStatic">(click text to continue)</h4>
                 </div>
             )}
-            {textArr[textIndex] == 1 && (
+            {textArr[textIndex] === 1 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">What was your name back then?</h1>
                     <div className="storyInputDiv">
                         <input className="storyInput" name="first_name" placeholder="(Write your name here)" value={characterDraft.first_name} onChange={inputChange}></input>
-                        {characterDraft.first_name != "" && (
+                        {characterDraft.first_name !== "" && (
                             <h4 className="storyText" onClick={nextText}>
                                 (Done)
                             </h4>
@@ -181,7 +207,7 @@ export default function CharacterCreation() {
                     </div>
                 </div>
             )}
-            {textArr[textIndex] == 2 && (
+            {textArr[textIndex] === 2 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">What did they call you?</h1>
                     <div className="storyInputDiv">
@@ -250,7 +276,11 @@ export default function CharacterCreation() {
             )}
             {textArr[textIndex] == 7 && (
                 <div className="columnFlex">
-                    <img id="picture" src={characterDraft.image || "https://media.istockphoto.com/id/152982306/photo/silhouette-reflected-on-puddle.jpg?s=612x612&w=0&k=20&c=otaYz0O80j6TMC5ygEKR9gPyjrGAeZopaSAXdWbyYYg="} alt="picture preview" />
+                    <img
+                        id="picture"
+                        src={characterDraft.image || "https://media.istockphoto.com/id/152982306/photo/silhouette-reflected-on-puddle.jpg?s=612x612&w=0&k=20&c=otaYz0O80j6TMC5ygEKR9gPyjrGAeZopaSAXdWbyYYg="}
+                        alt="picture preview"
+                    />
                     <h1 className="storyTextStatic">Who did you see in the reflection?</h1>
                     <input type="file" name="file" onChange={setImage} />
                     {file != null && (
