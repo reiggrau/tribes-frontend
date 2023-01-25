@@ -50,7 +50,7 @@ export default function App() {
                     </div>
                 </>
             )}
-            {screen !== "start" && <Music />}
+            <Music />
             {screen === "welcome" && <Welcome />}
             {screen === "home" && <Home />}
             {screen === "game" && <Game />}

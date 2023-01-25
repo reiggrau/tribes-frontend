@@ -12,7 +12,7 @@ export default function Loading() {
     useEffect(() => {
         console.log("Loading.jsx useEffect");
 
-        setMusic("none");
+        dispatch(setMusic("none"));
 
         setTimeout(() => {
             setLoading(false);

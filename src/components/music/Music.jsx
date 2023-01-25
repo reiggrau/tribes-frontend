@@ -37,9 +37,8 @@ export default function Music() {
                 break;
             default:
                 console.log("stop()");
-            // stop();
         }
-    }, [playMenu, music]);
+    }, [music]);
 
     return <div></div>;
 }

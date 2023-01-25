@@ -8,7 +8,7 @@ import { createStore } from "redux";
 import rootReducer from "./redux/reducer.js";
 
 // socket.io
-// import { initSocket } from "./socket.js";
+import { initSocket } from "./socket.js";
 
 // Components
 import App from "./App";
@@ -18,7 +18,7 @@ const store = createStore(rootReducer);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// initSocket(store);
+initSocket(store);
 
 root.render(
     <Provider store={store}>

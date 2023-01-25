@@ -3,7 +3,10 @@ import { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setMusic } from "../../../redux/reducer.js";
 
-// import Music2 from "/tribes2.mp3";
+// Background images
+import caveBackground from "../../../assets/tutorial_cave.png";
+import ravineBackground from "../../../assets/tutorial_ravine.jpeg";
+import forestBackground from "../../../assets/tutorial_forest.jpeg";
 
 export default function Tutorial() {
     const character = useSelector((state) => state.character);
@@ -11,6 +14,63 @@ export default function Tutorial() {
     const [sceneIndex, setSceneIndex] = useState(0);
 
     const dispatch = useDispatch();
+
+    // const [music, setMusic] = useState("/tribes2.mp3");
+    const [backgroundImage, setBackgroundImage] = useState(caveBackground);
+
+    const fadeRef = useRef(null);
+    // const backgroundRef = useRef(null);
+    const parchmentRef = useRef(null);
+    const textRef = useRef(null);
+
+    // const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log("Tutorial.jsx useEffect");
+
+        dispatch(setMusic("tutorial"));
+
+        fadeRef.current.style.backgroundColor = "black";
+        fadeRef.current.style.visibility = "visible";
+        setTimeout(() => {
+            // Fade to view
+            fadeRef.current.style.backgroundColor = "none";
+            fadeRef.current.style.animation = "fadetoview 1s none linear";
+
+            // fadeRef.current.style.animation = "fadetoview 1s none linear";
+
+            setTimeout(() => {
+                fadeRef.current.style.visibility = "hidden";
+            }, 1000);
+        }, 2000);
+
+        setTimeout(() => {
+            parchmentRef.current.style.opacity = "1";
+            // setUi(true);
+        }, 5000);
+    }, []);
+
+    function nextScene(n) {
+        // fade to black
+        textRef.current.style.opacity = "0";
+
+        setTimeout(() => {
+            setSceneIndex(sceneIndex + n);
+        }, 500);
+
+        setTimeout(() => {
+            textRef.current.style.opacity = "1";
+        }, 1000);
+    }
+
+    function nextBackground(newBackground) {
+        parchmentRef.current.style.opacity = "0";
+        setBackgroundImage(newBackground);
+
+        setTimeout(() => {
+            parchmentRef.current.style.opacity = "1";
+        }, 3000);
+    }
 
     const scene = [
         {
@@ -32,7 +92,7 @@ export default function Tutorial() {
             option1: {
                 text: "Leave the cave.",
                 func: () => {
-                    nextBackground("/tutorial_ravine.jpeg");
+                    nextBackground(ravineBackground);
                     nextScene(2);
                 },
             },
@@ -48,7 +108,7 @@ export default function Tutorial() {
             option1: {
                 text: "Leave the cave.",
                 func: () => {
-                    nextBackground("/tutorial_ravine.jpeg");
+                    nextBackground(ravineBackground);
                     nextScene(1);
                 },
             },
@@ -111,7 +171,7 @@ export default function Tutorial() {
             option1: {
                 text: "Follow the path.",
                 func: () => {
-                    nextBackground("/tutorial_forest.jpeg");
+                    nextBackground(forestBackground);
                     nextScene(1);
                 },
             },
@@ -122,63 +182,6 @@ export default function Tutorial() {
             next: `Thank you!`,
         },
     ];
-
-    // const [music, setMusic] = useState("/tribes2.mp3");
-    const [backgroundImage, setBackgroundImage] = useState("/tutorial_cave.png");
-
-    const fadeRef = useRef(null);
-    // const backgroundRef = useRef(null);
-    const parchmentRef = useRef(null);
-    const textRef = useRef(null);
-
-    // const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log("Tutorial.jsx useEffect");
-
-        dispatch(setMusic("tutorial"));
-
-        fadeRef.current.style.backgroundColor = "black";
-        fadeRef.current.style.visibility = "visible";
-        setTimeout(() => {
-            // Fade to view
-            fadeRef.current.style.backgroundColor = "none";
-            fadeRef.current.style.animation = "fadetoview 1s none linear";
-
-            // fadeRef.current.style.animation = "fadetoview 1s none linear";
-
-            setTimeout(() => {
-                fadeRef.current.style.visibility = "hidden";
-            }, 1000);
-        }, 2000);
-
-        setTimeout(() => {
-            parchmentRef.current.style.opacity = "1";
-            // setUi(true);
-        }, 5000);
-    }, []);
-
-    function nextScene(n) {
-        // fade to black
-        textRef.current.style.opacity = "0";
-
-        setTimeout(() => {
-            setSceneIndex(sceneIndex + n);
-        }, 500);
-
-        setTimeout(() => {
-            textRef.current.style.opacity = "1";
-        }, 1000);
-    }
-
-    function nextBackground(newBackground) {
-        parchmentRef.current.style.opacity = "0";
-        setBackgroundImage(newBackground);
-
-        setTimeout(() => {
-            parchmentRef.current.style.opacity = "1";
-        }, 3000);
-    }
 
     return (
         <div className="backgroundQuest" style={{ backgroundImage: `url(${backgroundImage})` }}>
