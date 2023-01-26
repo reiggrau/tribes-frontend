@@ -4,7 +4,7 @@
 import { combineReducers } from "redux";
 
 //// IMPORTANT ////
-const isDeployed = true; // Change this to boolean 'true' before deploying
+const isDeployed = false; // Change this to boolean 'true' before deploying
 ////
 
 const serverUrl = isDeployed ? "https://tribes-the-game-backend.onrender.com" : "";
@@ -25,8 +25,8 @@ const initialState = {
 
 // SERVER URL
 // reducer:
-function serverUrlReducer(user = initialState.serverUrl) {
-    return user;
+function serverUrlReducer(serverUrl = initialState.serverUrl) {
+    return serverUrl;
 }
 
 // MUSIC

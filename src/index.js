@@ -11,7 +11,7 @@ import rootReducer from "./redux/reducer.js";
 import { initSocket } from "./socket.js";
 
 // Components
-import App from "./App";
+import { App } from "./App";
 
 // root
 const store = createStore(rootReducer);

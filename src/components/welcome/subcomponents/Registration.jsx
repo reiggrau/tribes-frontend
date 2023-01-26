@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, setScreen } from "../../../redux/reducer.js";
 
-import { useSelector } from "react-redux";
+import { socket } from "../../../socket.js";
 
 // Variables
-const namesRegex = /^[a-z ,.'-]+$/i;
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const namesRegex = /^[a-z ,.'-]+$/i;
 
 export default function Registration(props) {
     const { changeMenu } = props;
@@ -13,6 +15,9 @@ export default function Registration(props) {
     const [message, setMessage] = useState("");
 
     const serverUrl = useSelector((state) => state.serverUrl);
+    //
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         console.log("Registration.jsx useEffect");
@@ -24,14 +29,17 @@ export default function Registration(props) {
     }
 
     function submitForm(e) {
-        e.preventDefault();
         console.log("submitForm() form:", form);
+
+        e.preventDefault();
 
         if (!form.username || !form.email || !form.password) {
             setMessage("Missing fields!");
         } else if (!form.email.match(emailRegex) || !form.username.match(namesRegex)) {
             setMessage("Invalid input format!");
         } else {
+            console.log("fetch " + serverUrl + "/registration. form :", form);
+
             fetch(serverUrl + "/registration", {
                 method: "POST",
                 headers: {
@@ -41,11 +49,13 @@ export default function Registration(props) {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log("Registration data :", data);
+                    console.log("/registration data :", data);
                     if (data.success) {
-                        // setLoginStatus(true);
-                        // history.pushState({}, "", `/`);
-                        // location.reload();
+                        socket.emit("login");
+
+                        const userData = data.user;
+                        userData && dispatch(loginUser(userData)); // fetch user info from server and send it to redux global store
+                        dispatch(setScreen("home"));
                     } else {
                         setMessage(data.message);
                         throw new Error("REGISTRATION FAILED");

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import { loginUser, logoutUser, setScreen } from "../../../redux/reducer.js";
+
+import { socket } from "../../../socket.js";
 
 // Variables
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+//
 
 export default function Login(props) {
     const { changeMenu } = props;
@@ -13,8 +14,8 @@ export default function Login(props) {
     const [form, setForm] = useState({ email: "", password: "" });
     const [message, setMessage] = useState("");
 
-    const user = useSelector((state) => state.user);
     const serverUrl = useSelector((state) => state.serverUrl);
+    const user = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
 
@@ -35,9 +36,9 @@ export default function Login(props) {
         if (!form.email || !form.password) {
             setMessage("Missing fields!");
         } else if (!form.email.match(emailRegex)) {
-            this.setState({ message: "Invalid input format!" });
+            setMessage("Invalid input format!");
         } else {
-            console.log("fetch " + serverUrl + "/login form.email", form.email);
+            console.log("fetch " + serverUrl + "/login. form :", form);
 
             fetch(serverUrl + "/login", {
                 method: "POST",
@@ -50,9 +51,9 @@ export default function Login(props) {
                 .then((data) => {
                     console.log("/login data:", data);
                     if (data.success) {
-                        // Handle user data
-                        const userData = data.user;
+                        socket.emit("login");
 
+                        const userData = data.user;
                         userData && dispatch(loginUser(userData)); // fetch user info from server and send it to redux global store
                     } else {
                         setMessage(data.message);

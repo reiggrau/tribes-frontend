@@ -6,13 +6,15 @@ import Welcome from "./components/welcome/Welcome.jsx";
 import Home from "./components/home/Home.jsx";
 import Game from "./components/game/Game.jsx";
 
+import { socket } from "./socket.js";
+
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, logoutUser, setScreen } from "./redux/reducer.js";
 
 // Server url
 
-export default function App() {
+export function App() {
     const screen = useSelector((state) => state.screen);
     const serverUrl = useSelector((state) => state.serverUrl); // Change serverUrl in redux reducer before deploying
 
@@ -27,6 +29,8 @@ export default function App() {
                 console.log("fetch /user/id.json data :", data);
 
                 if (data.id) {
+                    socket.emit("login");
+
                     const userData = data;
                     userData && dispatch(loginUser(userData));
                 } else {
@@ -34,7 +38,7 @@ export default function App() {
                     dispatch(setScreen("start"));
                 }
             });
-        alert("DO NOT use your real email or password! This webpage is for demonstration only. Please use a fake email and password.");
+        alert("DO NOT use your real email or password! \n\nThis webpage is for demonstration only.\nPlease use a fake email and password.");
     }, []);
 
     return (
