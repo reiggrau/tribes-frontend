@@ -9,12 +9,15 @@ import tutorialMusic from "../../assets/tribes2.mp3";
 import stormAmbience from "../../assets/StormSoundEffects.mp3";
 
 export default function Music() {
+    // SET VOLUME
+    const volume = 0.25; // from 0 to 1
+
     // Play music
-    const [playMenu, { stop }] = useSound(menuMusic);
-    const [playTutorial] = useSound(tutorialMusic);
+    const [playMenu, { stop }] = useSound(menuMusic, { volume: volume });
+    const [playTutorial] = useSound(tutorialMusic, { volume: volume });
 
     // Play ambience
-    const [playStorm] = useSound(stormAmbience);
+    const [playStorm] = useSound(stormAmbience, { volume: volume });
 
     const music = useSelector((state) => state.music);
 

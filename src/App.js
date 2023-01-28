@@ -29,7 +29,7 @@ export function App() {
                 console.log("fetch /user/id.json data :", data);
 
                 if (data.id) {
-                    socket.emit("login");
+                    socket.emit("login", data.id);
 
                     const userData = data;
                     userData && dispatch(loginUser(userData));

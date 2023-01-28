@@ -13,13 +13,15 @@ import { initSocket } from "./socket.js";
 // Components
 import { App } from "./App";
 
-// root
-const store = createStore(rootReducer);
+// redux store
+const store = createStore(rootReducer); // Creates a Redux store that holds the complete state tree of the app.
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+initSocket(store); // Executes the initSocket function from socket.js that contains all socket.io actions, and passes the Redux store as an argument
 
-initSocket(store);
+// react root
+const root = ReactDOM.createRoot(document.getElementById("root")); // createRoot lets you create a root to display React components inside a browser DOM node ("#root").
 
+// MAIN
 root.render(
     <Provider store={store}>
         <App />

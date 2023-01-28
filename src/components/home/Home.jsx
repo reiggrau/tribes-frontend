@@ -16,6 +16,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, logoutUser, getFriends, setScreen } from "../../redux/reducer.js";
 
+import { socket } from "../../socket.js";
+
 export default function Home() {
     const [profileMenu, setProfileMenu] = useState(false); // is the profile window open? (default 'false')
     const [otherProfile, setOtherProfile] = useState(0);
@@ -61,6 +63,7 @@ export default function Home() {
 
         fetch("/logout");
         // history.pushState({}, "", `/`);
+        socket.emit("logout");
     }
 
     function toggleProfile() {

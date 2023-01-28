@@ -51,9 +51,10 @@ export default function Registration(props) {
                 .then((data) => {
                     console.log("/registration data :", data);
                     if (data.success) {
-                        socket.emit("login");
-
                         const userData = data.user;
+
+                        socket.emit("login", userData.id);
+
                         userData && dispatch(loginUser(userData)); // fetch user info from server and send it to redux global store
                         dispatch(setScreen("home"));
                     } else {

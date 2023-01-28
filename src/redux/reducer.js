@@ -273,8 +273,7 @@ export function setLocation(location) {
     };
 }
 
-// ROOT REDUCER
-
+// STORE / ROOT REDUCER
 const rootReducer = combineReducers({
     serverUrl: serverUrlReducer,
     music: musicReducer,

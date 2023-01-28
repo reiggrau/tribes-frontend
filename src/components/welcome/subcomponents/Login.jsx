@@ -51,9 +51,10 @@ export default function Login(props) {
                 .then((data) => {
                     console.log("/login data:", data);
                     if (data.success) {
-                        socket.emit("login");
-
                         const userData = data.user;
+
+                        socket.emit("login", userData.id);
+
                         userData && dispatch(loginUser(userData)); // fetch user info from server and send it to redux global store
                     } else {
                         setMessage(data.message);
@@ -73,6 +74,8 @@ export default function Login(props) {
         dispatch(logoutUser());
 
         fetch(serverUrl + "/logout");
+
+        socket.emit("logout");
     }
 
     return (
