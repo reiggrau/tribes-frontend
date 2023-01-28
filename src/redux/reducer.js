@@ -4,7 +4,7 @@
 import { combineReducers } from "redux";
 
 //// IMPORTANT ////
-const isDeployed = false; // Change this to boolean 'true' before deploying
+const isDeployed = true; // Change this to boolean 'true' before deploying
 ////
 
 const serverUrl = isDeployed ? "https://tribes-the-game-backend.onrender.com" : "";
@@ -51,9 +51,10 @@ export function setMusic(music) {
 function userReducer(user = initialState.user, action) {
     if (action.type === "/user/login") {
         return action.payload.user;
-    } else if (action.type === "/user/logout") {
-        return initialState.user;
     }
+    // else if (action.type === "/user/logout") {
+    //     return initialState.user;
+    // }
 
     return user;
 }
@@ -66,12 +67,12 @@ export function loginUser(user) {
     };
 }
 
-export function logoutUser() {
-    return {
-        type: "/user/logout",
-        payload: { undefined },
-    };
-}
+// export function logoutUser() {
+//     return {
+//         type: "/user/logout",
+//         payload: { undefined },
+//     };
+// }
 
 // FRIENDS
 // reducer:
@@ -274,7 +275,7 @@ export function setLocation(location) {
 }
 
 // STORE / ROOT REDUCER
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     serverUrl: serverUrlReducer,
     music: musicReducer,
     user: userReducer,
@@ -286,5 +287,21 @@ const rootReducer = combineReducers({
     character: characterReducer,
     location: locationReducer,
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === "USER_LOGOUT") {
+        return appReducer(undefined, action);
+    }
+
+    return appReducer(state, action);
+};
+
+// RESET STATE
+export function logoutUser() {
+    return {
+        type: "USER_LOGOUT",
+        payload: { undefined },
+    };
+}
 
 export default rootReducer;

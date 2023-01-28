@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { loginUser } from "../../../redux/reducer.js";
 
+import default_user from "../../../assets/default_user.jpg";
+
 // Variables
 const namesRegex = /^[a-z ,.'-]+$/i;
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -159,7 +161,7 @@ export default function Profile(props) {
                     <div>
                         {!editMode && (
                             <>
-                                <img id="picture" src={props.user.picture || "/default_user.jpg"} alt="preview" />
+                                <img id="picture" src={props.user.picture || default_user} alt="preview" />
 
                                 <div id="userInfo">
                                     <h2>{props.user.username}</h2>
@@ -171,7 +173,7 @@ export default function Profile(props) {
                         )}
                         {editMode && (
                             <>
-                                <img id="picture" src={draft.picture || "/default_user.jpg"} alt="preview" />
+                                <img id="picture" src={draft.picture || default_user} alt="preview" />
 
                                 <form>
                                     <input type="file" name="file" onChange={setPicture} />

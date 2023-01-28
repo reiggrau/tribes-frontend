@@ -4,6 +4,8 @@ import { loginUser, logoutUser, setScreen } from "../../../redux/reducer.js";
 
 import { socket } from "../../../socket.js";
 
+import default_user from "../../../assets/default_user.jpg";
+
 // Variables
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 //
@@ -104,7 +106,7 @@ export default function Login(props) {
                 <div className="window">
                     <div className="centeredFlex">
                         <div>
-                            <img src={user.picture || "../../assets/default_user.jpg"} id="loginUserPicture" alt="user" />
+                            <img src={user.picture || default_user} id="loginUserPicture" alt="user" />
                             <h2>Welcome back,</h2>
                             <h1>{user.username}</h1>
                         </div>

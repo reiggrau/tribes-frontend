@@ -24,6 +24,7 @@ export default function Home() {
     const [friendsList, setFriendsList] = useState(false);
     const [canvas, setCanvas] = useState(false);
 
+    const serverUrl = useSelector((state) => state.serverUrl);
     const user = useSelector((state) => state.user);
     const newRequest = useSelector((state) => state.newRequest);
 
@@ -61,7 +62,7 @@ export default function Home() {
         dispatch(logoutUser());
         dispatch(setScreen("welcome"));
 
-        fetch("/logout");
+        fetch(serverUrl + "/logout");
         // history.pushState({}, "", `/`);
         socket.emit("logout");
     }
