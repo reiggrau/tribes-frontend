@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { setScreen, setLocation, setCharacter } from "../../../redux/reducer.js";
 
@@ -8,6 +8,8 @@ import default_user from "../../../assets/default_user.jpg";
 export default function SelectionScreen() {
     const [charactersArr, setCharactersArr] = useState([]);
 
+    const serverUrl = useSelector((state) => state.serverUrl);
+
     const fadeRef = useRef(null);
 
     const dispatch = useDispatch();
@@ -15,7 +17,7 @@ export default function SelectionScreen() {
     useEffect(() => {
         console.log("SelectionScreen useEffect");
 
-        fetch("/characters.json")
+        fetch(serverUrl + "/characters.json")
             .then((res) => {
                 return res.json();
             })

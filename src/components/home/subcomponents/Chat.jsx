@@ -9,6 +9,7 @@ function Chat() {
     const [chat, setChat] = useState(false);
     const [text, setText] = useState("");
 
+    const serverUrl = useSelector((state) => state.serverUrl);
     const userId = useSelector((state) => state.user.id);
     const chatId = useSelector((state) => state.chatId);
     const messages = useSelector((state) => state.messages);
@@ -23,7 +24,7 @@ function Chat() {
         // console.log("Chat useEffect(). chatId:", chatId);
         dispatch(resetMessages());
 
-        fetch(`/messages/${chatId}.json`)
+        fetch(serverUrl + `/messages/${chatId}.json`)
             .then((res) => {
                 return res.json();
             })

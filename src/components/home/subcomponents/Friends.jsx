@@ -11,8 +11,7 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
     // const [acceptedFriends, setAcceptedFriends] = useState([]);
 
     //Redux
-    // useDispatch is used to dispatch action from component to redux store
-    const dispatch = useDispatch();
+    const serverUrl = useSelector((state) => state.serverUrl);
 
     // useSelector is used to retrieve updated data from the global redux store
     const pendingFriends = useSelector((state) => {
@@ -23,12 +22,15 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
         return state.friends.filter((user) => user.status === true);
     });
 
+    const dispatch = useDispatch(); // useDispatch is used to dispatch action from component to redux store
+
     useEffect(() => {
         console.log("Friends useEffect");
+
         dispatch(newRequestUpdate(false)); // We turn of the notification dot by changing the global state
 
         // Update friends state with the data from the database
-        fetch("/friendships.json")
+        fetch(serverUrl + "/friendships.json")
             .then((res) => {
                 return res.json();
             })
@@ -41,9 +43,9 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
     }, []);
 
     function acceptFriendRequest(id) {
-        // console.log("acceptFriendRequest. id:", id);
+        console.log("acceptFriendRequest. id:", id);
 
-        fetch(`/accept/${id}.json`)
+        fetch(serverUrl + `/accept/${id}.json`)
             .then((res) => {
                 return res.json();
             })
@@ -57,9 +59,9 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
     }
 
     function cancelFriendRequest(id) {
-        // console.log("cancelFriendRequest. id:", id);
+        console.log("cancelFriendRequest. id:", id);
 
-        fetch(`/cancel/${id}.json`)
+        fetch(serverUrl + `/cancel/${id}.json`)
             .then((res) => {
                 return res.json();
             })

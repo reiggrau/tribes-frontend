@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import SearchUserResultList from "./SearchUserResultList.jsx";
 
@@ -8,6 +9,8 @@ function SearchUser({ setOtherProfile }) {
     const [searchString, setSearchString] = useState("");
     const [resultList, setResultList] = useState(false);
     const [users, setUsers] = useState([]);
+
+    const serverUrl = useSelector((state) => state.serverUrl);
 
     function inputChange(e) {
         setSearchString(e.target.value);
@@ -22,7 +25,7 @@ function SearchUser({ setOtherProfile }) {
         timer = setTimeout(() => {
             let searchString = e.target.value;
 
-            fetch("/searchuser", {
+            fetch(serverUrl + "/searchuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

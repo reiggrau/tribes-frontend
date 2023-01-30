@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import FriendButton from "./FriendButton.jsx";
 
 export default function OtherProfile({ otherProfile, setOtherProfile }) {
     const [otherUser, setOtherUser] = useState({});
 
+    const serverUrl = useSelector((state) => state.serverUrl);
+
     useEffect(() => {
         console.log("otherUser useEffect otherProfile:", otherProfile);
 
-        fetch(`/user/${otherProfile}.json`)
+        fetch(serverUrl + `/user/${otherProfile}.json`)
             .then((res) => {
                 return res.json();
             })

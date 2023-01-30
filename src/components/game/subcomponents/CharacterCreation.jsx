@@ -1,20 +1,23 @@
 // REDUX
 import { useRef, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setScreen, setLocation, setCharacter, setMusic } from "../../../redux/reducer.js";
+
+import reflectionImg from "../../../assets/reflection.jpg";
 
 export default function CharacterCreation() {
     const [characterDraft, setCharacterDraft] = useState({ first_name: "", last_name: "", image: "", tribe: "", role: "" });
     const [file, setFile] = useState(null);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const serverUrl = useSelector((state) => state.serverUrl);
 
     const [textIndex, setTextIndex] = useState(0);
     const [textArr, setTextArr] = useState([
         0,
         "The night was cold, and you were far from home.",
         "You were fishing on a ravine when the weather changed suddenly.",
-        "You couldn't afford to get wet, so you took refuge in a nearby cave.",
-        "There, you awaited for the storm to end, but the day ended first...",
-        "This is how your story began.",
+        "You took refuge in a nearby cave, where you awaited for the storm to end.",
         1,
         `Ah, yes, a name of a time long gone...`,
         "But the ones that knew you called you something else.",
@@ -27,8 +30,7 @@ export default function CharacterCreation() {
         "There was a puddle of perfectly still water in the cave, and you approached it.",
         7,
         8,
-        "And that's who you thought you would ever be...",
-        "But unbeknown to you, the world was changing. And so would you.",
+        "And that's who you thought you would ever be... But the world was changing, and so would you.",
         9,
     ]);
 
@@ -132,6 +134,12 @@ export default function CharacterCreation() {
     }
 
     function submitForm() {
+        if (formSubmitted) {
+            return;
+        }
+
+        setFormSubmitted(true);
+
         const { first_name, last_name, tribe, role, strength, dexterity, intellect } = characterDraft;
 
         const formData = new FormData();
@@ -145,7 +153,7 @@ export default function CharacterCreation() {
         formData.append("dexterity", dexterity);
         formData.append("intellect", intellect);
 
-        fetch("/newcharacter", {
+        fetch(serverUrl + "/newcharacter", {
             method: "POST",
             body: formData,
         })
@@ -220,7 +228,7 @@ export default function CharacterCreation() {
                     </div>
                 </div>
             )}
-            {textArr[textIndex] == 3 && (
+            {textArr[textIndex] === 3 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">
                         '{characterDraft.first_name} {characterDraft.last_name}'. Is that correct?
@@ -233,7 +241,7 @@ export default function CharacterCreation() {
                     </h2>
                 </div>
             )}
-            {textArr[textIndex] == 4 && (
+            {textArr[textIndex] === 4 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">What was your tribe known for?</h1>
                     <h2 className="storyText" onClick={() => selectTribe("Holtmar")}>
@@ -247,7 +255,7 @@ export default function CharacterCreation() {
                     </h2>
                 </div>
             )}
-            {textArr[textIndex] == 5 && (
+            {textArr[textIndex] === 5 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">And what was your role in the tribe?</h1>
                     <h2 className="storyText" onClick={() => selectRole("Hunter")}>
@@ -261,7 +269,7 @@ export default function CharacterCreation() {
                     </h2>
                 </div>
             )}
-            {textArr[textIndex] == 6 && (
+            {textArr[textIndex] === 6 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">
                         {characterDraft.role} from the tribe of the {characterDraft.tribe}. Is that correct?
@@ -274,13 +282,9 @@ export default function CharacterCreation() {
                     </h2>
                 </div>
             )}
-            {textArr[textIndex] == 7 && (
+            {textArr[textIndex] === 7 && (
                 <div className="columnFlex">
-                    <img
-                        id="picture"
-                        src={characterDraft.image || "https://media.istockphoto.com/id/152982306/photo/silhouette-reflected-on-puddle.jpg?s=612x612&w=0&k=20&c=otaYz0O80j6TMC5ygEKR9gPyjrGAeZopaSAXdWbyYYg="}
-                        alt="picture preview"
-                    />
+                    <img id="picture" src={characterDraft.image || reflectionImg} alt="preview" />
                     <h1 className="storyTextStatic">Who did you see in the reflection?</h1>
                     <input type="file" name="file" onChange={setImage} />
                     {file != null && (
@@ -290,10 +294,10 @@ export default function CharacterCreation() {
                     )}
                 </div>
             )}
-            {textArr[textIndex] == 8 && (
+            {textArr[textIndex] === 8 && (
                 <div className="columnFlex">
                     <h1 className="storyTextStatic">Is this who you were back then?</h1>
-                    <img id="picture" src={characterDraft.image} alt="picture preview" />
+                    <img id="picture" src={characterDraft.image} alt="preview" />
                     <h1 className="storyTextStatic">
                         {characterDraft.first_name} {characterDraft.last_name}
                     </h1>
@@ -308,10 +312,10 @@ export default function CharacterCreation() {
                     </h2>
                 </div>
             )}
-            {textArr[textIndex] == 9 && (
+            {textArr[textIndex] === 9 && (
                 <div className="columnFlex">
                     <h1 className="storyText" onClick={submitForm}>
-                        Let's see now who you became...
+                        This is how your story began...
                     </h1>
                 </div>
             )}

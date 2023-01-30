@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { loginUser } from "../../../redux/reducer.js";
 
@@ -14,6 +14,8 @@ export default function Profile(props) {
     const [message, setMessage] = useState("");
     const [file, setFile] = useState(null);
     const [draft, setDraft] = useState(props.user);
+
+    const serverUrl = useSelector((state) => state.serverUrl);
 
     const dispatch = useDispatch();
 
@@ -63,7 +65,7 @@ export default function Profile(props) {
             formData.append("email", email);
             formData.append("bio", bio);
 
-            fetch("/profile", {
+            fetch(serverUrl + "/profile", {
                 method: "POST",
                 body: formData,
             })
@@ -107,7 +109,7 @@ export default function Profile(props) {
             return;
         }
 
-        fetch("/deletegetcode", {
+        fetch(serverUrl + "/deletegetcode", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -127,7 +129,7 @@ export default function Profile(props) {
                     return;
                 }
 
-                fetch("/deletecheckcode", {
+                fetch(serverUrl + "/deletecheckcode", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -139,7 +141,7 @@ export default function Profile(props) {
                         // console.log("data :", data);
                         if (data.success) {
                             alert(data.message);
-                            fetch("/logout");
+                            fetch(serverUrl + "/logout");
                         } else {
                             alert(data.message);
                             return;
