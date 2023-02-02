@@ -24,7 +24,7 @@ function Chat() {
         // console.log("Chat useEffect(). chatId:", chatId);
         dispatch(resetMessages());
 
-        fetch(serverUrl + `/messages/${chatId}.json`)
+        fetch(serverUrl + `/messages/${userId}/${chatId}.json`)
             .then((res) => {
                 return res.json();
             })
@@ -63,9 +63,9 @@ function Chat() {
         // console.log("filterMessage() userId:", userId, "chatId:", chatId);
         // console.log("filterMessage() message:", message);
 
-        const isGlobal = message.receiver_id == 0 && chatId == 0;
-        const isTargetToMine = message.sender_id == chatId && message.receiver_id == userId;
-        const isMineToTarget = message.sender_id == userId && message.receiver_id == chatId;
+        const isGlobal = message.receiver_id === 0 && chatId === 0;
+        const isTargetToMine = message.sender_id === chatId && message.receiver_id === userId;
+        const isMineToTarget = message.sender_id === userId && message.receiver_id === chatId;
 
         if (isGlobal || isTargetToMine || isMineToTarget) {
             return (

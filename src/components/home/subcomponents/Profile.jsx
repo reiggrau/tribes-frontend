@@ -51,7 +51,7 @@ export default function Profile(props) {
     }
 
     function submitForm() {
-        const { username, email, bio } = draft;
+        const { id, username, email, bio } = draft;
 
         if (!username || !email) {
             setMessage("Missing fields!");
@@ -60,6 +60,7 @@ export default function Profile(props) {
         } else {
             const formData = new FormData();
 
+            formData.append("id", id);
             formData.append("file", file);
             formData.append("username", username);
             formData.append("email", email);
@@ -100,6 +101,7 @@ export default function Profile(props) {
 
     function deleteAccount() {
         console.log("deleteAccount");
+        const id = props.user.id;
         const email = props.user.email;
 
         const password = prompt("Type your password to confirm account deletion:");
@@ -114,7 +116,7 @@ export default function Profile(props) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ id, email, password }),
         })
             .then((res) => res.json())
             .then((data) => {

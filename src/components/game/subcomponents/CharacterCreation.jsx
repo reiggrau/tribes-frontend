@@ -11,6 +11,7 @@ export default function CharacterCreation() {
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const serverUrl = useSelector((state) => state.serverUrl);
+    const user = useSelector((state) => state.user);
 
     const [textIndex, setTextIndex] = useState(0);
     const [textArr, setTextArr] = useState([
@@ -144,6 +145,7 @@ export default function CharacterCreation() {
 
         const formData = new FormData();
 
+        formData.append("id", user.id);
         formData.append("file", file);
         formData.append("first_name", first_name);
         formData.append("last_name", last_name);

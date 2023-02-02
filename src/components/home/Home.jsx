@@ -35,7 +35,7 @@ export default function Home() {
 
         setCanvas(true);
 
-        fetch(serverUrl + "/user/0.json")
+        fetch(serverUrl + "/user/" + user.id + ".json")
             .then((res) => {
                 return res.json();
             })

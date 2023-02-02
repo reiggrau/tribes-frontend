@@ -9,6 +9,7 @@ export default function SelectionScreen() {
     const [charactersArr, setCharactersArr] = useState([]);
 
     const serverUrl = useSelector((state) => state.serverUrl);
+    const user = useSelector((state) => state.user);
 
     const fadeRef = useRef(null);
 
@@ -17,7 +18,7 @@ export default function SelectionScreen() {
     useEffect(() => {
         console.log("SelectionScreen useEffect");
 
-        fetch(serverUrl + "/characters.json")
+        fetch(serverUrl + `/characters/${user.id}.json`)
             .then((res) => {
                 return res.json();
             })

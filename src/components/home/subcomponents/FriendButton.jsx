@@ -5,11 +5,12 @@ export default function FriendButton({ otherProfile }) {
     const [otherUserStatus, setOtherUserStatus] = useState("befriend");
 
     const serverUrl = useSelector((state) => state.serverUrl);
+    const user = useSelector((state) => state.user);
 
     useEffect(() => {
         console.log("FriendButton useEffect(id):", otherProfile);
 
-        fetch(serverUrl + `/status/${otherProfile}.json`)
+        fetch(serverUrl + `/status/${user.id}/${otherProfile}.json`)
             .then((res) => {
                 return res.json();
             })
@@ -34,7 +35,7 @@ export default function FriendButton({ otherProfile }) {
     function sendFriendRequest() {
         console.log("sendFriendRequest. id:", otherProfile);
 
-        fetch(serverUrl + `/befriend/${otherProfile}.json`)
+        fetch(serverUrl + `/befriend/${user.id}/${otherProfile}.json`)
             .then((res) => {
                 return res.json();
             })
@@ -53,7 +54,7 @@ export default function FriendButton({ otherProfile }) {
     function cancelFriendRequest() {
         console.log("cancelFriendRequest. id:", otherProfile);
 
-        fetch(serverUrl + `/cancel/${otherProfile}.json`)
+        fetch(serverUrl + `/cancel/${user.id}/${otherProfile}.json`)
             .then((res) => {
                 return res.json();
             })
@@ -72,7 +73,7 @@ export default function FriendButton({ otherProfile }) {
     function acceptFriendRequest() {
         console.log("acceptFriendRequest. id:", otherProfile);
 
-        fetch(serverUrl + `/accept/${otherProfile}.json`)
+        fetch(serverUrl + `/accept/${user.id}/${otherProfile}.json`)
             .then((res) => {
                 return res.json();
             })
