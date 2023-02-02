@@ -15,7 +15,7 @@ function SearchUser({ setOtherProfile }) {
     function inputChange(e) {
         setSearchString(e.target.value);
 
-        if (e.target.value == "") {
+        if (e.target.value === "") {
             setUsers([]);
             return;
         }

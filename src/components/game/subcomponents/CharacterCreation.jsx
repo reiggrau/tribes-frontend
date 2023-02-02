@@ -222,7 +222,7 @@ export default function CharacterCreation() {
                     <h1 className="storyTextStatic">What did they call you?</h1>
                     <div className="storyInputDiv">
                         <input className="storyInput" name="last_name" placeholder="(Write your last name)" value={characterDraft.last_name} onChange={inputChange}></input>
-                        {characterDraft.last_name != "" && (
+                        {characterDraft.last_name !== "" && (
                             <h4 className="storyText" onClick={nextText}>
                                 (Done)
                             </h4>

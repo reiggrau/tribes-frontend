@@ -42,7 +42,7 @@ export default function FriendButton({ otherProfile }) {
             .then((data) => {
                 // console.log("sendFriendRequest data:", data);
 
-                if (data.status == false) {
+                if (data.status === false) {
                     setOtherUserStatus("cancel");
                 }
             })
@@ -61,7 +61,7 @@ export default function FriendButton({ otherProfile }) {
             .then((data) => {
                 // console.log("cancelFriendRequest data:", data);
 
-                if (data.success == true) {
+                if (data.success === true) {
                     setOtherUserStatus("befriend");
                 }
             })
