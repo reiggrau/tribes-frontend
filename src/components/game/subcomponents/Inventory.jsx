@@ -13,7 +13,7 @@ import hunger_png from "../../../assets/hunger.png";
 import morale_png from "../../../assets/morale.png";
 
 import handaxe_png from "../../../assets/handaxe.png";
-import fishing_spear_png from "../../../assets/fisghing_spear.png";
+import fishing_spear_png from "../../../assets/fishing_spear.png";
 import leather_clothes_png from "../../../assets/leather_clothes.png";
 import skin_pouch_png from "../../../assets/skin_pouch.png";
 
