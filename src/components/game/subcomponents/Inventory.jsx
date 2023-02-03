@@ -5,6 +5,21 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 // import { setChatId, resetMessages, getMessages } from "../../../redux/reducer.js";
 
+import health_png from "../../../assets/health.png";
+import stamina_png from "../../../assets/stamina.png";
+import warmth_png from "../../../assets/warmth.png";
+import thirst_png from "../../../assets/thirst.png";
+import hunger_png from "../../../assets/hunger.png";
+import morale_png from "../../../assets/morale.png";
+
+import handaxe_png from "../../../assets/handaxe.png";
+import fishing_spear_png from "../../../assets/fisghing_spear.png";
+import leather_clothes_png from "../../../assets/leather_clothes.png";
+import skin_pouch_png from "../../../assets/skin_pouch.png";
+
+import raw_fish_png from "../../../assets/raw_fish.png";
+import cooked_fish_png from "../../../assets/cooked_fish.png";
+
 export default function Inventory() {
     const character = useSelector((state) => state.character);
 
@@ -52,37 +67,37 @@ export default function Inventory() {
                                 </h4>
                                 <p>Stats:</p>
                                 <div className="healthbarDiv">
-                                    <img className="healthbarIcon" src="/health.png" alt="" />
+                                    <img className="healthbarIcon" src={health_png} alt="" />
                                     <div className="healthbar">
                                         <div className="bar" style={{ width: character.health * 100 + "%" }}></div>
                                     </div>
                                 </div>
                                 <div className="healthbarDiv">
-                                    <img className="healthbarIcon" src="/stamina.png" alt="" />
+                                    <img className="healthbarIcon" src={stamina_png} alt="" />
                                     <div className="healthbar">
                                         <div className="bar" style={{ width: character.stamina * 100 + "%" }}></div>
                                     </div>
                                 </div>
                                 <div className="healthbarDiv">
-                                    <img className="healthbarIcon" src="/warmth.png" alt="" />
+                                    <img className="healthbarIcon" src={warmth_png} alt="" />
                                     <div className="healthbar">
                                         <div className="bar" style={{ width: character.warmth * 100 + "%" }}></div>
                                     </div>
                                 </div>
                                 <div className="healthbarDiv">
-                                    <img className="healthbarIcon" src="/thirst.png" alt="" />
+                                    <img className="healthbarIcon" src={thirst_png} alt="" />
                                     <div className="healthbar">
                                         <div className="bar" style={{ width: character.thirst * 100 + "%" }}></div>
                                     </div>
                                 </div>
                                 <div className="healthbarDiv">
-                                    <img className="healthbarIcon" src="/hunger.png" alt="" />
+                                    <img className="healthbarIcon" src={hunger_png} alt="" />
                                     <div className="healthbar">
                                         <div className="bar" style={{ width: character.hunger * 100 + "%" }}></div>
                                     </div>
                                 </div>
                                 <div className="healthbarDiv">
-                                    <img className="healthbarIcon" src="/morale.png" alt="" />
+                                    <img className="healthbarIcon" src={morale_png} alt="" />
                                     <div className="healthbar">
                                         <div className="bar" style={{ width: character.morale * 100 + "%" }}></div>
                                     </div>
@@ -98,23 +113,23 @@ export default function Inventory() {
                             <div id="inventory">
                                 <div className="gearDiv">
                                     <div className="inventorySlot">
-                                        <img className="itemImg" src="/handaxe.png" alt="" />
+                                        <img className="itemImg" src={handaxe_png} alt="" />
                                     </div>
                                     <div className="inventorySlot">
-                                        <img className="itemImg" src="/fishing_spear.png" alt="" />
+                                        <img className="itemImg" src={fishing_spear_png} alt="" />
                                     </div>
                                     <div className="inventorySlot">
-                                        <img className="itemImg" src="/leather_clothes.png" alt="" />
+                                        <img className="itemImg" src={leather_clothes_png} alt="" />
                                     </div>
                                     <div className="inventorySlot">
-                                        <img className="itemImg" src="/skin_pouch.png" alt="" />
+                                        <img className="itemImg" src={skin_pouch_png} alt="" />
                                     </div>
                                 </div>
                                 <div className="inventorySlot">
-                                    <img className="itemImg" src="/raw_fish.png" alt="" />
+                                    <img className="itemImg" src={raw_fish_png} alt="" />
                                 </div>
                                 <div className="inventorySlot">
-                                    <img className="itemImg" src="/cooked_fish.png" alt="" />
+                                    <img className="itemImg" src={cooked_fish_png} alt="" />
                                 </div>
                                 <div className="inventorySlot"></div>
                                 <div className="inventorySlot"></div>

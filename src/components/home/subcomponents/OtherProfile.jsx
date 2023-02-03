@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 import FriendButton from "./FriendButton.jsx";
 
+import default_user from "../../../assets/default_user.jpg";
+
 export default function OtherProfile({ otherProfile, setOtherProfile }) {
     const [otherUser, setOtherUser] = useState({});
 
@@ -31,7 +33,7 @@ export default function OtherProfile({ otherProfile, setOtherProfile }) {
             <div className="window">
                 <div id="profileDiv">
                     <div>
-                        <img id="picture" src={otherUser.picture || "/default_user.jpg"} alt="" />
+                        <img id="picture" src={otherUser.picture || default_user} alt="" />
 
                         <div id="userInfo">
                             <h2>{otherUser.username}</h2>

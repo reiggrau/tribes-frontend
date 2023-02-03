@@ -5,6 +5,8 @@ import { socket } from "../../../socket.js";
 import { useSelector, useDispatch } from "react-redux";
 import { setChatId, resetMessages, getMessages } from "../../../redux/reducer.js";
 
+import default_user from "../../../assets/default_user.jpg";
+
 function Chat() {
     const [chat, setChat] = useState(false);
     const [text, setText] = useState("");
@@ -70,7 +72,7 @@ function Chat() {
         if (isGlobal || isTargetToMine || isMineToTarget) {
             return (
                 <div key={message.id} className="chatMessage">
-                    <img id="headerUserPicture" src={message.picture || "/default_user.jpg"} alt="" />
+                    <img id="headerUserPicture" src={message.picture || default_user} alt="" />
                     <div>
                         <h4>
                             {message.username} <span className="date"> {message.created_at}</span>
