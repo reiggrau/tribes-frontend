@@ -42,21 +42,23 @@ export default function Loading() {
                     </div>
                     {loading && (
                         <h1 id="loadingTxt">
-                            L O A D I N G{" "}
-                            <span id="loadingDot1" className="loadingDot">
-                                .{" "}
-                            </span>
-                            <span id="loadingDot2" className="loadingDot">
-                                .{" "}
-                            </span>
-                            <span id="loadingDot3" className="loadingDot">
-                                .
+                            <span>
+                                L O A D I N G{" "}
+                                <span id="loadingDot1" className="loadingDot">
+                                    .{" "}
+                                </span>
+                                <span id="loadingDot2" className="loadingDot">
+                                    .{" "}
+                                </span>
+                                <span id="loadingDot3" className="loadingDot">
+                                    .
+                                </span>
                             </span>
                         </h1>
                     )}
                     {!loading && (
                         <h1 id="loadingTxt" className="storyText" onClick={nextLocation}>
-                            <span> </span>C O N T I N U E
+                            <span>C O N T I N U E</span>
                         </h1>
                     )}
                 </div>

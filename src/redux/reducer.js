@@ -4,7 +4,7 @@
 import { combineReducers } from "redux";
 
 //// IMPORTANT ////
-const isDeployed = true; // Change this to boolean 'true' before deploying
+const isDeployed = false; // Change this to boolean 'true' before deploying
 ////
 
 export const serverUrl = isDeployed ? "https://tribes-the-game-backend.onrender.com" : ""; // it will use the 'proxy' url if not deployed (look at package.json)

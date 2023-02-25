@@ -62,9 +62,15 @@
 }
 
 #loadingTxt {
-    font-family: Diogenes;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     cursor: pointer;
+}
+
+#loadingTxt span {
+    font-family: Diogenes;
 }
 
 .loadingDot {
