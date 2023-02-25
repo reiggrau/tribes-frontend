@@ -1,3 +1,5 @@
+<img src="public/github_tribes_logo.gif">
+
 # Browser Game & Social Network
 
 ## Overview
