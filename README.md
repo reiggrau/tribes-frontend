@@ -34,3 +34,18 @@ Note: The app is optimized for desktop full-screen.
 -   JavaScript, AWS S3, Node.js, Express.js, PostgreSQL, Socket.IO, React & Redux
 
 ## Preview
+
+**_Welcome Page_**
+<img src="public/tribes_01.gif">
+
+<br>
+
+**_Lobby_**
+<img src="public/tribes_01.gif">
+
+<br>
+
+**_New Game_**
+<img src="public/tribes_01.gif">
+
+<br>
