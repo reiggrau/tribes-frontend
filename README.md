@@ -41,9 +41,9 @@ Note: The app is optimized for desktop full-screen.
 
 <p> The 'registration', 'login' and 'password recovery' forms are located in the title screen. Each of them is a React subcomponent.</p>
 
-<p>The background is a Far Cry Primal wallpaper, photoshopped into multiple layers, and given to each one a lateral sway in order to achieve a parallax effect (the man, the mammoths, and the nearby mountains are each a different layer).</p>
+<p>The background is a <b>Far Cry Primal</b> wallpaper, photoshopped into multiple layers, and given to each one a lateral sway in order to achieve a parallax effect (the man, the mammoths, and the nearby mountains are each a different layer).</p>
 
-<p>Primitive-themed music is added to enhance immersiveness.</p>
+<p>Primitive-themed music from the game <b>Dawn</b> of Man is added to enhance immersiveness.</p>
 
 <br>
 
