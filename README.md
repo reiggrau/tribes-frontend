@@ -41,11 +41,11 @@ Note: The app is optimized for desktop full-screen.
 <br>
 
 **_Lobby_**
-<img src="public/tribes_01.gif">
+<img src="public/tribes_02.gif">
 
 <br>
 
 **_New Game_**
-<img src="public/tribes_01.gif">
+<img src="public/tribes_03.gif">
 
 <br>
