@@ -26,6 +26,7 @@ Note: The app is optimized for desktop full-screen.
     -   View the login status of friends in real time, marked with a green dot next to their name
 -   In the personal profile, the user can upload a profile picture as well as add a small biography
 -   Users can also change their username and the account's linked email
+-   The app includes background music (experimental)
 
 ## Technology
 
@@ -38,14 +39,24 @@ Note: The app is optimized for desktop full-screen.
 **_Welcome Page_**
 <img src="public/tribes_01.gif">
 
+<p> The 'registration', 'login' and 'password recovery' forms are located in the title screen. Each of them is a React subcomponent.</p>
+
+<p>The background is a Far Cry Primal wallpaper, photoshopped into multiple layers, and given to each one a lateral sway in order to achieve a parallax effect (the man, the mammoths, and the nearby mountains are each a different layer).</p>
+
+<p>Primitive-themed music is added to enhance immersiveness.</p>
+
 <br>
 
 **_Lobby_**
 <img src="public/tribes_02.gif">
 
+<p>The main menu is also the lobby of the game. Here you can either create a new character (new game) or continue with an old one. All your progress is sent to the server and stored in the database.</p>
+
 <br>
 
 **_New Game_**
 <img src="public/tribes_03.gif">
+
+<p>The prologue is a succession of story text and questions, and a new character is created based on those questions. The user then is prompted to choose a name and an image file as their character portrait. A confirmation question is made in the end of the prologue.</p>
 
 <br>
