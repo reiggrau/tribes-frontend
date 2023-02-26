@@ -43,7 +43,7 @@ Note: The app is optimized for desktop full-screen.
 
 <p>The background is a <b>Far Cry Primal</b> wallpaper, photoshopped into multiple layers, and given to each one a lateral sway in order to achieve a parallax effect (the man, the mammoths, and the nearby mountains are each a different layer).</p>
 
-<p>Primitive-themed music from the game <b>Dawn</b> of Man is added to enhance immersiveness.</p>
+<p>Primitive-themed music from the game <b>Dawn of Man</b> is added to enhance immersiveness.</p>
 
 <br>
 
