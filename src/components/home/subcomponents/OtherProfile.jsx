@@ -13,12 +13,12 @@ export default function OtherProfile({ otherProfile, setOtherProfile }) {
     useEffect(() => {
         console.log("otherUser useEffect otherProfile:", otherProfile);
 
-        fetch(serverUrl + `/user/${otherProfile}.json`)
+        fetch(serverUrl + `/otheruser/${otherProfile}.json`)
             .then((res) => {
                 return res.json();
             })
             .then((data) => {
-                const userData = data[0][0];
+                const userData = data[0];
                 console.log("OtherProfile userData:", userData);
 
                 setOtherUser(userData);

@@ -12,6 +12,7 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
 
     //Redux
     const serverUrl = useSelector((state) => state.serverUrl);
+    const user = useSelector((state) => state.user);
 
     // useSelector is used to retrieve updated data from the global redux store
     const pendingFriends = useSelector((state) => {
@@ -45,7 +46,7 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
     function acceptFriendRequest(id) {
         console.log("acceptFriendRequest. id:", id);
 
-        fetch(serverUrl + `/accept/${id}.json`)
+        fetch(serverUrl + `/accept/${user.id}/${id}.json`)
             .then((res) => {
                 return res.json();
             })
@@ -61,7 +62,7 @@ export default function Friends({ toggleFriendsList, toggleOtherProfile }) {
     function cancelFriendRequest(id) {
         console.log("cancelFriendRequest. id:", id);
 
-        fetch(serverUrl + `/cancel/${id}.json`)
+        fetch(serverUrl + `/cancel/${user.id}/${id}.json`)
             .then((res) => {
                 return res.json();
             })
