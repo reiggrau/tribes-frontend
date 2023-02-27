@@ -61,20 +61,6 @@ Note: The app is optimized for desktop full-screen.
 
 <br>
 
-**_New Game_**
-<img src="public/tribes_03.gif">
-
-<p>The prologue is a succession of story text and questions, and a new character is created based on those questions. The user then is prompted to choose a name and an image file as their character portrait. A confirmation question is made in the end of the prologue.</p>
-
-<br>
-
-**_New Game_**
-<img src="public/tribes_03.gif">
-
-<p>The prologue is a succession of story text and questions, and a new character is created based on those questions. The user then is prompted to choose a name and an image file as their character portrait. A confirmation question is made in the end of the prologue.</p>
-
-<br>
-
 <img src="public/tribes_04.gif">
 
 <p>The pace of the narration and background sound effects are carefully executed in order to make the character creation process an engaging and immersive experience.</p>
