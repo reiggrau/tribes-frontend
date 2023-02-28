@@ -77,3 +77,28 @@ Note: The app is optimized for desktop full-screen.
 <p>There is also an 'inventory' component that is always visible to the player, and its contents are loaded and stored in the database at the beginning and ending of each 'quest'. There the player can also check their character's stats. Both items and stats determine the availability of choices through the story.</p>
 
 <br>
+
+**_User Profile_**
+<img src="public/tribes_07.gif">
+
+<p>The user profile can be completed with a user picture and a bio. The username and email can also be changed, provided that no other user is using them. The server checks this and send the client a warning if that's the case, indicating to them which is the conflicting field.</p>
+
+<br>
+
+**_Friends_**
+<img src="public/tribes_08.gif">
+
+<p>The 'friends' window show the user the current befriended players and the pending requests. Friendship requests can either be accepted here or in their user profile.</p>
+
+<p>A red dot appears next to 'friends' if the user has received a new friendship request since their last session, or if they receive a new one during the current one.</p>
+
+<br>
+
+**_Chat_**
+<img src="public/tribes_09.gif">
+
+<p>The chat component has a global chat where every user can write to everyone, or personal chats between two users that are 'friends'. New messages are sent to online users in real-time using socket.io at the same time that are stored in the database.</p>
+
+<p>A green dot appears next to friends that are online. This dot is also updated in real-time.</p>
+
+<br>
