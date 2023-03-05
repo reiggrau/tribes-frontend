@@ -2,7 +2,7 @@
 
 # Browser Game & Social Network
 
-<a href="https://tribes-the-game.onrender.com/">https://tribes-the-game.onrender.com/</a>
+<a href="https://tribes-the-game.onrender.com/" target="_blank">https://tribes-the-game.onrender.com/</a>
 
 ## Overview
 
@@ -105,4 +105,4 @@ Note: The app is optimized for desktop full-screen.
 
 <br>
 
-<h4>Try the app <a href="https://tribes-the-game.onrender.com/"></a></h4>
+<a href="https://tribes-the-game.onrender.com/" target="_blank">Try the app here</a>
