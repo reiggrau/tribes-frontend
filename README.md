@@ -2,6 +2,8 @@
 
 # Browser Game & Social Network
 
+<a href="https://tribes-the-game.onrender.com/">https://tribes-the-game.onrender.com/</a>
+
 ## Overview
 
 This is a single-page application website made with React that allows users to sign in and play a 'choose-your-path' browser game.
@@ -102,3 +104,5 @@ Note: The app is optimized for desktop full-screen.
 <p>A green dot appears next to friends that are online. This dot is also updated in real-time.</p>
 
 <br>
+
+<h4>Try the app <a href="https://tribes-the-game.onrender.com/"></a></h4>
